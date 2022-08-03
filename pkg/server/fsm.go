@@ -1367,6 +1367,13 @@ func (h *fsmHandler) opensent(ctx context.Context) (bgp.FSMState, *fsmStateReaso
 								}
 							}
 						}
+							for i, a := range fsm.pConf.AfiSafis {
+								if string(a.Config.AfiSafiName) == "ipv4-srpolicy" {
+									fsm.pConf.AfiSafis[i].MpGracefulRestart.State.Enabled = true
+									fsm.pConf.AfiSafis[i].MpGracefulRestart.State.Received = true
+									break
+								}
+							}
 
 						// RFC 4724 4.1
 						// To re-establish the session with its peer, the Restarting Speaker

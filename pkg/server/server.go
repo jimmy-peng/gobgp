@@ -1430,13 +1430,13 @@ func (s *BgpServer) handleFSMMessage(peer *peer, e *fsmMsg) {
 
 				// attach LLGR_STALE community to paths in peer's adj-rib-in
 				// paths with NO_LLGR are deleted
-				pathList := peer.markLLGRStale(llgr)
+				//pathList := peer.markLLGRStale(llgr)
 
 				// calculate again
 				// wheh path with LLGR_STALE chosen as best,
 				// peer which doesn't support LLGR will drop the path
 				// if it is in adj-rib-out, do withdrawal
-				s.propagateUpdate(peer, pathList)
+				//s.propagateUpdate(peer, pathList)
 
 				for _, f := range llgr {
 					endCh := make(chan struct{})
